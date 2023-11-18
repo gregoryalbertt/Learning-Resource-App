@@ -1,10 +1,16 @@
+<!-- eslint-disable vue/no-multiple-template-root -->
+/* eslint-disable */
 <template>
-    <ul>
-        <li v-for="resource in storedResources">{{ resource }}</li>
-    </ul>
+    <header>
+        <h1>Learning Resource App</h1>
+    </header>
+    <StoredResources :resources="storedResources"></StoredResources>
 </template>
 
 <script>
+import StoredResources from './components/learning-resources/StoredResources.vue';
+
+
 export default {
     data() {
         return {
@@ -18,14 +24,30 @@ export default {
                 {
                     id: 'google',
                     title: 'Google',
-                    description: 'Learn to Google',
+                    description: 'Learn to Google...',
                     link: 'http://google.com'
                 },
             ]
-        }
-    }
-
+        };
+    },
+    components: { StoredResources }
 }
 </script>
 
-<style></style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+header {}
+</style>
