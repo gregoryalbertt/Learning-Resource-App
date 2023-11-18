@@ -1,19 +1,19 @@
 <!-- eslint-disable vue/no-multiple-template-root -->
 /* eslint-disable */
 <template>
-    <header>
-        <h1>Learning Resource App</h1>
-    </header>
+    <TheHeader :title="title"></TheHeader>
     <StoredResources :resources="storedResources"></StoredResources>
 </template>
 
 <script>
+import TheHeader from './components/layouts/TheHeader.vue';
 import StoredResources from './components/learning-resources/StoredResources.vue';
 
 
 export default {
     data() {
         return {
+            title: 'Learning App Resources',
             storedResources: [
                 {
                     id: 'official guide',
@@ -30,7 +30,7 @@ export default {
             ]
         };
     },
-    components: { StoredResources }
+    components: { StoredResources, TheHeader }
 }
 </script>
 
@@ -48,6 +48,4 @@ html {
 body {
     margin: 0;
 }
-
-header {}
 </style>
