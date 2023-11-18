@@ -37,6 +37,7 @@ export default {
         return {
             resources: this.storedResources,
             addResource: this.addResource,
+            deleteResource: this.deleteResource,
         }
     },
     methods: {
@@ -47,6 +48,10 @@ export default {
             arg.id = new Date().toISOString();
             this.storedResources.unshift(arg)
             this.selectedTab = 'stored-resources'
+        },
+        deleteResource(id) {
+            const resourceIndex = this.storedResources.findIndex(res => id === res.id)
+            this.storedResources.splice(resourceIndex, 1)
         }
     },
     computed: {
