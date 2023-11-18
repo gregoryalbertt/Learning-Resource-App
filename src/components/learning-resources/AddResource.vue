@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
     data() {
         return {
@@ -32,9 +34,23 @@ export default {
     },
     methods: {
         submitResource() {
-            // this.$emit('addResource', this.resource);
+
+
+            if (this.resource.title === '' || this.resource.description === '' || this.resource.link === '') {
+                Swal.fire({
+                    icon: "error",
+                    title: "Empty input field",
+                    text: "Something went wrong!",
+                });
+                return
+            }
             this.addResource(this.resource)
             this.resource = {}
+            Swal.fire({
+                title: "Success",
+                text: "The Resource was successfully added",
+                icon: "success"
+            });
         }
     },
     inject: ['addResource'],
